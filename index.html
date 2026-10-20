@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="theme-color" content="#7654c8">
+  <meta name="description" content="Amino Cure — مرجع دوائي مبسط لمعلومات سلامة الأدوية أثناء الحمل والرضاعة.">
+
+  <title>Amino Cure | مرجع الحمل والرضاعة</title>
+
+  <link rel="icon" href="./logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="./logo.png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="stylesheet" href="./style.css">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem("amino-cure-theme");
+        if (savedTheme === "dark" || savedTheme === "light") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (error) {
+        // يعمل التطبيق حتى لو لم يكن التخزين متاحًا.
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- شريط علوي -->
+  <header class="app-header" id="top">
+    <div class="header-brand">
+      <img
+        src="./logo.png"
+        alt="Amino Cure"
+        class="app-logo"
+        width="46"
+        height="46"
+      >
+
+      <div class="brand-text">
+        <h1>Pregnancy&Feeding</h1>
+        <p data-i18n="subtitle">Amino cure</p>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button
+        type="button"
+        id="languageToggle"
+        class="icon-button"
+        aria-label="تغيير اللغة"
+        title="العربية / English"
+      >
+        EN
+      </button>
+
+      <button
+        type="button"
+        id="themeToggle"
+        class="icon-button"
+        aria-label="تغيير المظهر"
+        title="الوضع الفاتح والداكن"
+      >
+        <span id="themeIcon" aria-hidden="true">☾</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- المحتوى الرئيسي -->
+  <main class="app-main">
+
+    <!-- مقدمة التطبيق -->
+    <section class="hero-section" aria-labelledby="heroTitle">
+      <div class="hero-badge">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span data-i18n="heroBadge">مرجع دوائي سريع</span>
+      </div>
+
+      <h2 id="heroTitle" data-i18n="heroTitle">
+        المعلومة الدوائية، <span>بوضوح.</span>
+      </h2>
+
+      <p class="hero-description" data-i18n="heroDescription">
+        ابحث عن دوائك واعرف المعلومات المتاحة عن سلامته أثناء الحمل والرضاعة، مع إمكانية الرجوع إلى المصدر.
+      </p>
+
+      <div class="hero-decoration" aria-hidden="true">
+        <span class="decoration-circle circle-one"></span>
+        <span class="decoration-circle circle-two"></span>
+        <span class="decoration-plus">+</span>
+      </div>
+    </section>
+<!-- صورة البروفايل في بداية التطبيق -->
+
+    <!-- البحث -->
+    <section class="search-section" aria-labelledby="searchTitle">
+      <div class="section-heading">
+        <div>
+          <span class="section-eyebrow" data-i18n="searchEyebrow">
+     
+          </span>
+          <h1 id="searchTitle" data-i18n="searchTitle">
+            ابحث عن دواء
+          </h1>
+        </div>
+
+        <span class="search-symbol" aria-hidden="true">⌕</span>
+      </div>
+
+      <form id="searchForm" class="search-form" role="search">
+        <label for="drugSearch" class="visually-hidden" data-i18n="searchLabel">
+          اسم الدواء
+        </label>
+
+        <span class="search-input-icon" aria-hidden="true">⌕</span>
+
+        <input
+          type="search"
+          id="drugSearch"
+          name="drug"
+          placeholder="الاسم العلمي أو التجاري..."
+          data-i18n-placeholder="searchPlaceholder"
+          autocomplete="off"
+          autocapitalize="none"
+          spellcheck="false"
+          aria-describedby="searchHelp"
+        >
+
+        <button
+          type="submit"
+          id="searchButton"
+          class="primary-button"
+          data-i18n="searchButton"
+        >
+          بحث
+        </button>
+      </form>
+
+      <p id="searchHelp" class="search-help" data-i18n="searchHelp">
+        ابحث بالاسم العلمي أو التجاري للدواء.
+      </p>
+
+      <div
+        id="searchSuggestions"
+        class="search-suggestions"
+        aria-label="اقتراحات البحث"
+        hidden
+      ></div>
+
+      <div
+        id="searchResults"
+        class="search-results"
+        aria-live="polite"
+        aria-atomic="false"
+      ></div>
+    </section>
+
+    <!-- حالة الاتصال -->
+    <div class="connection-status" id="connectionStatus">
+      <span class="connection-indicator" aria-hidden="true"></span>
+      <span id="connectionText" data-i18n="onlineStatus">
+        متصل بالإنترنت
+      </span>
+    </div>
+
+    <!-- اختصارات -->
+          <div class="quick-access-grid">
+
+        <button
+          type="button"
+          class="quick-access-card"
+          id="showFavorites"
+        >
+          <span class="quick-card-icon favorite-icon" aria-hidden="true">♡</span>
+
+          <span class="quick-card-text">
+            <strong data-i18n="favoritesTitle">المفضلة</strong>
+            <small data-i18n="favoritesDescription">أدويتك المحفوظة</small>
+          </span>
+
+          <span class="quick-card-arrow" aria-hidden="true">←</span>
+        </button>
+
+        <button
+          type="button"
+          class="quick-access-card"
+          id="showHistory"
+        >
+          <span class="quick-card-icon history-icon" aria-hidden="true">◷</span>
+
+          <span class="quick-card-text">
+            <strong data-i18n="historyTitle">آخر عمليات البحث</strong>
+            <small data-i18n="historyDescription">ارجع لبحثك السابق</small>
+          </span>
+
+          <span class="quick-card-arrow" aria-hidden="true">←</span>
+        </button>
+
+        <button
+          type="button"
+          class="quick-access-card guide-card"
+          id="showGuide"
+        >
+          <span class="quick-card-icon guide-icon" aria-hidden="true">✚</span>
+
+          <span class="quick-card-text">
+            <strong id="guideCardTitle">دليل الحمل والرضاعة</strong>
+            <small id="guideCardDesc">تكوّن الجنين والرضاعة للصيادلة</small>
+          </span>
+
+          <span class="quick-card-arrow" aria-hidden="true">←</span>
+        </button>
+
+      </div>
+      
+
+    <!-- لوحة المفضلة وسجل البحث -->
+        <!-- لوحة المفضلة وسجل البحث -->
+    <section
+      id="librarySection"
+      class="library-section"
+      aria-labelledby="libraryTitle"
+      hidden
+    >
+      <div class="section-heading">
+        <div>
+          <span class="section-eyebrow" data-i18n="libraryEyebrow">
+            محفوظاتك
+          </span>
+
+          <h2 id="libraryTitle">المفضلة</h2>
+        </div>
+
+        <button
+          type="button"
+          id="closeLibrary"
+          class="icon-button close-button"
+          aria-label="إغلاق"
+        >
+          ×
+        </button>
+      </div>
+
+      <div id="libraryContent" class="library-content"></div>
+
+      <button
+        type="button"
+        id="clearHistory"
+        class="text-button"
+        data-i18n="clearHistory"
+        hidden
+      >
+        مسح سجل البحث
+      </button>
+    </section>
+    <!-- دليل الحمل والرضاعة -->
+    <section
+      id="guideSection"
+      class="guide-section"
+      aria-labelledby="guideTitle"
+      hidden
+    >
+      <div class="section-heading">
+        <div>
+          <span class="section-eyebrow" id="guideEyebrow">دليل علمي</span>
+          <h2 id="guideTitle">الحمل والرضاعة</h2>
+        </div>
+
+        <button
+          type="button"
+          id="closeGuide"
+          class="icon-button close-button"
+          aria-label="إغلاق"
+        >
+          ×
+        </button>
+      </div>
+
+      <div id="guideTabs" class="guide-tabs" role="tablist"></div>
+
+      <div id="guideContent" class="guide-content" dir="rtl" lang="ar"></div>
+    </section>
+    <!-- معلومات التطبيق -->
+    
+<!-- معلومات التطبيق وصاحب المشروع -->
+<section class="about-section" aria-labelledby="aboutTitle">
+
+  <div class="about-profile">
+    <img
+      src="./profile.png"
+      alt="أمين تاج الدين عثمان، صاحب مشروع Amino Cure"
+      width="88"
+      height="88"
+      loading="lazy"
+    >
+  </div>
+
+  <div class="about-content">
+    
+<span class="section-eyebrow" data-i18n="aboutEyebrow">
+  عن المرجع
+</span>
+
+<h2 id="aboutTitle" data-i18n="aboutTitle">
+  مرجع صيدلاني مبني على المعرفة العلمية
+</h2>
+
+<p>مرجع صيدلاني يقدّم معلومات علمية مبسطة عن سلامة الأدوية أثناء الحمل والرضاعة، لدعم الاستخدام الآمن والواعي للأدوية.
+معلومة أبسط، حياة أفضل.</p>
+  </div>
+  <p class="about-author">
+  <strong>أمين تاج الدين عثمان</strong><br>
+  صيدلاني
+</p>
+</section>
+
+
+    <!-- التنبيه الطبي -->
+    <aside class="medical-disclaimer" aria-labelledby="disclaimerTitle">
+      <div class="disclaimer-icon" aria-hidden="true">ⓘ</div>
+
+      <div>
+        <h2 id="disclaimerTitle" data-i18n="disclaimerTitle">
+          تنبيه مهم
+        </h2>
+
+        <p data-i18n="disclaimerText">
+          هذا التطبيق مرجع مساعد وليس بديلًا عن التقييم السريري أو مراجعة المصادر الأصلية. لا توقف دواءً أو تغيّره دون استشارة مختص.
+        </p>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- تذييل الصفحة -->
+  <footer class="app-footer">
+    <div class="footer-brand">
+      <img
+        src="./logo.png"
+        alt=""
+        width="52"
+        height="52"
+        loading="lazy"
+        class="footer-logo"
+      >
+
+      <span>Amino Cure</span>
+    </div>
+
+    <p data-i18n="footerText">
+      معلومة أبسط، حياة أفضل.
+    </p>
+
+    <p class="footer-credit">
+      <span data-i18n="createdBy">بواسطة</span>
+      <strong>أمين تاج الدين عثمان</strong>
+    </p>
+
+    <small>© <span id="currentYear"></span> Amino Cure</small>
+  </footer>
+
+  <!-- الصورة الشخصية العائمة -->
+  
+  <!-- نافذة تعريف صاحب التطبيق -->
+  
+
+  <!-- زر العودة إلى الأعلى -->
+  <button
+    type="button"
+    id="backToTop"
+    class="back-to-top"
+    aria-label="العودة إلى أعلى الصفحة"
+    title="إلى الأعلى"
+    hidden
+  >
+    ↑
+  </button>
+
+  <!-- رسائل التطبيق -->
+  <div
+    id="toast"
+    class="toast-message"
+    role="status"
+    aria-live="polite"
+    hidden
+  ></div>
+
+  <!-- ملفات التطبيق -->
+      <script src="./drug.js"></script>
+  <script src="./drug-en.js"></script>
+  <script src="./guide.js"></script>
+  <script src="./app.js"></script>
+  <script>
+    document.getElementById("currentYear").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
