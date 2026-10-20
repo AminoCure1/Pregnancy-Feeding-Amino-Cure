@@ -1,0 +1,3245 @@
+/* =========================================
+   AMINO CURE
+   Pregnancy & Lactation Reference
+   Main Stylesheet
+========================================= */
+
+:root {
+  color-scheme: light;
+
+  --primary: #7654c8;
+  --primary-dark: #6040ad;
+  --primary-soft: #eee8fc;
+  --primary-glow: rgba(118, 84, 200, 0.18);
+
+  --accent: #38a986;
+  --accent-soft: #e5f7f0;
+
+  --bg: #f8f7fc;
+  --surface: #ffffff;
+  --surface-soft: #f1eff8;
+  --surface-hover: #f5f1ff;
+
+  --text: #252039;
+  --text-secondary: #777187;
+  --text-muted: #9b96aa;
+
+  --border: #e9e5f1;
+  --shadow: 0 8px 30px rgba(47, 33, 84, 0.06);
+  --shadow-hover: 0 12px 32px rgba(47, 33, 84, 0.11);
+
+  --danger: #d64f63;
+  --danger-soft: #fff0f2;
+
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 25px;
+  --radius-xl: 32px;
+
+  --container: 780px;
+
+  font-family:
+    "Tajawal",
+    "Cairo",
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --primary: #ad95f5;
+  --primary-dark: #9173e6;
+  --primary-soft: #30264d;
+  --primary-glow: rgba(173, 149, 245, 0.17);
+
+  --accent: #5bd4aa;
+  --accent-soft: #193a32;
+
+  --bg: #14111e;
+  --surface: #1e192b;
+  --surface-soft: #282239;
+  --surface-hover: #302644;
+
+  --text: #f3efff;
+  --text-secondary: #b6afc8;
+  --text-muted: #898198;
+
+  --border: #352c48;
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+  --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.28);
+
+  --danger: #ff8493;
+  --danger-soft: #40232c;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 280px;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.8;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family:
+    "Tajawal",
+    "Cairo",
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+}
+
+button,
+input {
+  font-size: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+img {
+  max-width: 100%;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+::selection {
+  color: #fff;
+  background: var(--primary);
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  width: 100%;
+  padding: 12px max(18px, calc((100% - var(--container)) / 2));
+
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  border-bottom: 1px solid var(--border);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+
+.app-logo {
+  display: block;
+  width: 45px;
+  height: 45px;
+  flex: 0 0 45px;
+  object-fit: contain;
+  border-radius: 13px;
+}
+
+.brand-text {
+  min-width: 0;
+}
+
+.brand-text h1 {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 19px;
+  line-height: 1.4;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.brand-text p {
+  margin: 1px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+
+  border: 1px solid var(--border);
+  border-radius: 13px;
+  background: var(--surface);
+  color: var(--text);
+
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    transform 0.18s ease;
+}
+
+.icon-button:hover {
+  background: var(--surface-hover);
+  border-color: var(--primary);
+}
+
+.icon-button:active {
+  transform: scale(0.94);
+}
+
+#languageToggle {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+#themeIcon {
+  font-size: 23px;
+  line-height: 1;
+}
+
+/* =========================================
+   MAIN LAYOUT
+========================================= */
+
+.app-main {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 24px 20px 35px;
+}
+
+section {
+  min-width: 0;
+}
+
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  padding: 32px 27px 34px;
+  margin-bottom: 31px;
+
+  color: #fff;
+  background:
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(255, 255, 255, 0.18),
+      transparent 35%
+    ),
+    linear-gradient(135deg, #6040ad 0%, #8060d1 55%, #9a7de5 100%);
+
+  border-radius: var(--radius-xl);
+  box-shadow: 0 15px 35px rgba(118, 84, 200, 0.17);
+}
+
+.hero-section > *:not(.hero-decoration) {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 5px 12px;
+  margin-bottom: 17px;
+
+  color: #fff;
+  background: rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.19);
+  border-radius: 30px;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+
+  background: #74e7ba;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(116, 231, 186, 0.13);
+}
+
+.hero-section h2 {
+  max-width: 540px;
+  margin: 0 0 12px;
+
+  font-size: clamp(27px, 5vw, 39px);
+  line-height: 1.45;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+}
+
+.hero-section h2 span {
+  color: #d8ccff;
+}
+
+.hero-description {
+  max-width: 520px;
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.hero-decoration {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.decoration-circle {
+  position: absolute;
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+}
+
+.circle-one {
+  width: 190px;
+  height: 190px;
+  top: -80px;
+  left: -45px;
+}
+
+.circle-two {
+  width: 115px;
+  height: 115px;
+  top: 100px;
+  left: 65px;
+}
+
+.decoration-plus {
+  position: absolute;
+  top: 28px;
+  left: 36px;
+  color: rgba(255, 255, 255, 0.35);
+  font-family: Arial, sans-serif;
+  font-size: 45px;
+  font-weight: 200;
+}
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-bottom: 19px;
+}
+
+.section-eyebrow {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.5;
+  font-weight: 800;
+}
+
+.search-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 43px;
+  height: 43px;
+
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 14px;
+
+  font-size: 28px;
+  line-height: 1;
+}
+
+.compact-heading {
+  margin-bottom: 17px;
+}
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.search-section {
+  margin-bottom: 27px;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  min-height: 65px;
+  padding: 8px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-form:focus-within {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-glow);
+}
+
+.search-input-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  flex: 0 0 35px;
+
+  color: var(--text-muted);
+  font-size: 27px;
+  line-height: 1;
+}
+
+.search-form input {
+  display: block;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
+  height: 44px;
+
+  padding: 0 2px;
+
+  color: var(--text);
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+}
+
+.search-form input:focus-visible {
+  outline: none;
+}
+
+.search-form input::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
+.search-form input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 75px;
+  min-height: 45px;
+  padding: 9px 17px;
+
+  color: #fff;
+  background: var(--primary);
+  border: 0;
+  border-radius: 13px;
+
+  font-size: 13px;
+  font-weight: 800;
+
+  cursor: pointer;
+  transition:
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.primary-button:hover {
+  background: var(--primary-dark);
+}
+
+.primary-button:active {
+  transform: scale(0.97);
+}
+
+.search-help {
+  margin: 10px 5px 0;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.search-suggestions {
+  margin-top: 10px;
+  overflow: hidden;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow);
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  width: 100%;
+  padding: 13px 15px;
+
+  text-align: start;
+  color: var(--text);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+
+  cursor: pointer;
+}
+
+.suggestion-item:last-child {
+  border-bottom: 0;
+}
+
+.suggestion-item:hover {
+  background: var(--surface-hover);
+}
+
+.suggestion-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.suggestion-detail {
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.search-results {
+  display: grid;
+  gap: 13px;
+  margin-top: 17px;
+}
+
+/* =========================================
+   DRUG RESULT CARDS
+========================================= */
+
+.drug-card {
+  overflow: hidden;
+  padding: 19px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+  animation: cardAppear 0.22s ease both;
+}
+
+.drug-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin-bottom: 17px;
+}
+
+.drug-name {
+  margin: 0 0 4px;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.drug-brand-name {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.favorite-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 39px;
+  height: 39px;
+  flex: 0 0 39px;
+
+  color: var(--primary);
+  background: var(--primary-soft);
+  border: 1px solid transparent;
+  border-radius: 13px;
+
+  font-size: 23px;
+  line-height: 1;
+
+  cursor: pointer;
+  transition: transform 0.18s ease;
+}
+
+.favorite-toggle:active {
+  transform: scale(0.9);
+}
+
+.favorite-toggle.is-favorite {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.drug-assessments {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.assessment-card {
+  min-width: 0;
+  padding: 14px;
+
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.assessment-heading {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 9px;
+
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.assessment-symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 27px;
+  height: 27px;
+  flex: 0 0 27px;
+
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 9px;
+
+  font-size: 14px;
+}
+
+.assessment-value {
+  margin: 0 0 5px;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.assessment-description {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.evidence-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 14px;
+  padding: 5px 9px;
+
+  color: var(--text-secondary);
+  background: var(--surface-soft);
+  border-radius: 9px;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.drug-summary {
+  margin: 14px 0 0;
+  padding: 13px;
+
+  color: var(--text-secondary);
+  background: var(--surface-soft);
+  border-inline-start: 3px solid var(--primary);
+  border-radius: 10px;
+
+  font-size: 12px;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+
+.drug-details {
+  margin-top: 13px;
+  border-top: 1px solid var(--border);
+}
+
+.drug-details summary {
+  padding: 13px 0 3px;
+
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+.drug-details-content {
+  display: grid;
+  gap: 10px;
+  padding-top: 11px;
+}
+
+.drug-detail-item {
+  padding: 11px 12px;
+  background: var(--surface-soft);
+  border-radius: 12px;
+}
+
+.drug-detail-item h4 {
+  margin: 0 0 4px;
+  font-size: 12px;
+}
+
+.drug-detail-item p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.drug-source {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  margin-top: 15px;
+  padding-top: 13px;
+
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+
+  font-size: 10px;
+}
+
+.drug-source a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.drug-source a:hover {
+  text-decoration: underline;
+}
+
+.no-results {
+  padding: 25px 18px;
+  text-align: center;
+
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.no-results-icon {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-size: 30px;
+}
+
+.no-results h3 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.no-results p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.no-results .text-button {
+  margin-top: 12px;
+}
+
+/* =========================================
+   CONNECTION STATUS
+========================================= */
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 33px;
+  padding: 7px 12px;
+
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+
+  font-size: 11px;
+}
+
+.connection-indicator {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.connection-status.is-offline .connection-indicator {
+  background: #e3a84d;
+}
+
+.connection-status.is-offline {
+  color: var(--text-secondary);
+}
+
+/* =========================================
+   QUICK ACCESS
+========================================= */
+
+.quick-access-section {
+  margin-bottom: 29px;
+}
+
+.quick-access-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.quick-access-card {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-width: 0;
+  min-height: 91px;
+  padding: 14px 12px;
+
+  text-align: start;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  cursor: pointer;
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.quick-access-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.quick-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+
+  border-radius: 14px;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.favorite-icon {
+  color: #d75a78;
+  background: #fff0f3;
+}
+
+.history-icon {
+  color: #4789c6;
+  background: #eaf4ff;
+}
+
+html[data-theme="dark"] .favorite-icon {
+  background: #40232e;
+  color: #ff91aa;
+}
+
+html[data-theme="dark"] .history-icon {
+  background: #23354b;
+  color: #8bc5ff;
+}
+
+.quick-card-text {
+  display: grid;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.quick-card-text strong {
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.quick-card-text small {
+  color: var(--text-secondary);
+  font-size: 10px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.quick-card-arrow {
+  color: var(--text-muted);
+  font-size: 17px;
+}
+
+/* =========================================
+   LIBRARY
+========================================= */
+
+.library-section {
+  margin-bottom: 28px;
+  padding: 19px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow);
+  scroll-margin-top: 100px;
+}
+
+.library-section .section-heading h2 {
+  font-size: 19px;
+}
+
+.close-button {
+  font-size: 25px;
+}
+
+.library-content {
+  display: grid;
+  gap: 9px;
+}
+
+.library-empty {
+  padding: 20px 10px;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.library-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 11px 12px;
+
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.library-item-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.library-item-name {
+  display: block;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.library-item-subtitle {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 10px;
+}
+
+.library-open-button,
+.library-remove-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 35px;
+  min-height: 35px;
+  padding: 5px 9px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+
+  cursor: pointer;
+}
+
+.library-open-button {
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.library-remove-button {
+  color: var(--danger);
+  font-size: 18px;
+}
+
+.text-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 0;
+  margin-top: 10px;
+
+  color: var(--danger);
+  background: transparent;
+  border: 0;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
+/* =========================================
+   ABOUT
+========================================= */
+
+.about-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+
+  padding: 21px;
+  margin-bottom: 17px;
+
+  background: var(--primary-soft);
+  border: 1px solid color-mix(in srgb, var(--primary) 15%, transparent);
+  border-radius: var(--radius-lg);
+}
+
+.about-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+
+  color: var(--primary);
+  background: var(--surface);
+  border-radius: 14px;
+
+  font-size: 22px;
+}
+
+.about-content {
+  min-width: 0;
+}
+
+.about-content h2 {
+  margin: 0 0 5px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.about-content p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 2;
+}
+
+/* =========================================
+   MEDICAL DISCLAIMER
+========================================= */
+
+.medical-disclaimer {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  padding: 17px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.disclaimer-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 29px;
+  height: 29px;
+  flex: 0 0 29px;
+
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 9px;
+
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.medical-disclaimer h2 {
+  margin: 0 0 5px;
+  font-size: 12px;
+}
+
+.medical-disclaimer p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 2;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.app-footer {
+  padding: 26px 20px 35px;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-bottom: 5px;
+
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.footer-brand img {
+  display: block;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.app-footer > p {
+  margin: 4px 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.app-footer .footer-credit {
+  margin-top: 10px;
+}
+
+.footer-credit strong {
+  color: var(--primary);
+}
+
+.app-footer small {
+  display: block;
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+/* =========================================
+   FLOATING PROFILE
+========================================= */
+
+.floating-profile {
+  position: fixed;
+  right: max(16px, calc((100vw - 850px) / 2));
+  bottom: 20px;
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 62px;
+  height: 62px;
+  padding: 0;
+
+  background: var(--surface);
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+
+  box-shadow:
+    0 5px 22px rgba(61, 39, 113, 0.24),
+    0 0 0 5px var(--primary-glow);
+
+  cursor: pointer;
+  isolation: isolate;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  animation: profileFloat 4s ease-in-out infinite;
+}
+
+.floating-profile:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow:
+    0 9px 26px rgba(61, 39, 113, 0.3),
+    0 0 0 6px var(--primary-glow);
+}
+
+.floating-profile:active {
+  transform: scale(0.95);
+}
+
+.floating-profile img {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-fallback {
+  position: relative;
+  z-index: -1;
+
+  color: var(--primary);
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.floating-profile.profile-image-missing img {
+  display: none;
+}
+
+.floating-profile.profile-image-missing .profile-fallback {
+  z-index: 1;
+}
+
+.profile-online-indicator {
+  position: absolute;
+  right: 0;
+  bottom: 1px;
+  z-index: 3;
+
+  width: 13px;
+  height: 13px;
+
+  background: #42c996;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+}
+
+.profile-popup {
+  position: fixed;
+  right: max(17px, calc((100vw - 850px) / 2));
+  bottom: 96px;
+  z-index: 101;
+
+  width: min(300px, calc(100vw - 34px));
+  padding: 24px 20px 20px;
+
+  text-align: center;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+
+  box-shadow: 0 16px 55px rgba(20, 14, 40, 0.2);
+  animation: popupAppear 0.2s ease both;
+}
+
+.profile-close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 31px;
+  height: 31px;
+
+  color: var(--text-secondary);
+  background: var(--surface-soft);
+  border: 0;
+  border-radius: 10px;
+
+  font-size: 22px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.profile-popup-image {
+  display: block;
+
+  width: 82px;
+  height: 82px;
+  margin: 5px auto 13px;
+
+  object-fit: cover;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px var(--primary-glow);
+}
+
+.profile-popup h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.profile-role {
+  margin: 5px 0 12px;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.profile-brand-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 5px 12px;
+
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 8px;
+
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.profile-tagline {
+  margin: 12px 0 0;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+/* =========================================
+   BACK TO TOP
+========================================= */
+
+.back-to-top {
+  position: fixed;
+  left: 18px;
+  bottom: 22px;
+  z-index: 90;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 43px;
+  height: 43px;
+
+  color: #fff;
+  background: var(--primary);
+  border: 0;
+  border-radius: 15px;
+
+  box-shadow: 0 5px 18px var(--primary-glow);
+
+  font-family: Arial, sans-serif;
+  font-size: 23px;
+  line-height: 1;
+
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-to-top:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
+}
+
+/* =========================================
+   TOAST
+========================================= */
+
+.toast-message {
+  position: fixed;
+  left: 50%;
+  bottom: 88px;
+  z-index: 200;
+
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  padding: 11px 17px;
+
+  color: #fff;
+  background: #29213d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 13px;
+
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.7;
+
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  transform: translateX(-50%);
+  animation: popupAppear 0.2s ease both;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes profileFloat {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popupAppear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   ENGLISH / LTR
+========================================= */
+
+html[dir="ltr"] .hero-section {
+  text-align: left;
+}
+
+html[dir="ltr"] .hero-description {
+  margin-inline-end: auto;
+}
+
+html[dir="ltr"] .decoration-plus {
+  right: 36px;
+  left: auto;
+}
+
+html[dir="ltr"] .circle-one {
+  right: -45px;
+  left: auto;
+}
+
+html[dir="ltr"] .circle-two {
+  right: 65px;
+  left: auto;
+}
+
+html[dir="ltr"] .drug-summary {
+  border-inline-start: 0;
+  border-inline-end: 3px solid var(--primary);
+}
+
+html[dir="ltr"] .floating-profile {
+  right: auto;
+  left: max(16px, calc((100vw - 850px) / 2));
+}
+
+html[dir="ltr"] .profile-popup {
+  right: auto;
+  left: max(17px, calc((100vw - 850px) / 2));
+}
+
+html[dir="ltr"] .profile-close {
+  right: 10px;
+  left: auto;
+}
+
+/* =========================================
+   RESPONSIVE — TABLET
+========================================= */
+
+@media (min-width: 768px) {
+  .app-main {
+    padding-top: 32px;
+    padding-bottom: 45px;
+  }
+
+  .hero-section {
+    padding: 40px 38px 43px;
+  }
+
+  .search-section {
+    margin-bottom: 35px;
+  }
+
+  .drug-card {
+    padding: 23px;
+  }
+
+  .quick-access-card {
+    padding: 17px;
+  }
+}
+
+/* =========================================
+   RESPONSIVE — MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+  .app-header {
+    padding: 10px 14px;
+  }
+
+  .app-logo {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .brand-text h1 {
+    font-size: 17px;
+  }
+
+  .brand-text p {
+    font-size: 10px;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .icon-button {
+    width: 37px;
+    height: 37px;
+    flex-basis: 37px;
+    border-radius: 12px;
+  }
+
+  .app-main {
+    padding: 19px 14px 29px;
+  }
+
+  .hero-section {
+    padding: 25px 20px 28px;
+    margin-bottom: 26px;
+    border-radius: 25px;
+  }
+
+  .hero-section h2 {
+    font-size: clamp(25px, 7vw, 32px);
+  }
+
+  .hero-description {
+    font-size: 12px;
+  }
+
+  .section-heading h2 {
+    font-size: 20px;
+  }
+
+  .search-form {
+    min-height: 59px;
+    gap: 5px;
+    padding: 6px;
+    border-radius: 17px;
+  }
+
+  .search-input-icon {
+    width: 28px;
+    flex-basis: 28px;
+    font-size: 23px;
+  }
+
+  .search-form input {
+    height: 42px;
+    font-size: 12px;
+  }
+
+  .primary-button {
+    min-width: 61px;
+    min-height: 42px;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 11px;
+  }
+
+  .drug-card {
+    padding: 15px;
+    border-radius: 19px;
+  }
+
+  .drug-name {
+    font-size: 18px;
+  }
+
+  .drug-assessments {
+    gap: 8px;
+  }
+
+  .assessment-card {
+    padding: 10px;
+    border-radius: 13px;
+  }
+
+  .assessment-heading {
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  .assessment-value {
+    font-size: 14px;
+  }
+
+  .assessment-description {
+    font-size: 10px;
+  }
+
+  .quick-access-grid {
+    gap: 9px;
+  }
+
+  .quick-access-card {
+    min-height: 82px;
+    gap: 8px;
+    padding: 10px 8px;
+    border-radius: 15px;
+  }
+
+  .quick-card-icon {
+    width: 35px;
+    height: 35px;
+    flex-basis: 35px;
+    border-radius: 11px;
+    font-size: 21px;
+  }
+
+  .quick-card-text strong {
+    font-size: 11px;
+  }
+
+  .quick-card-text small {
+    font-size: 9px;
+  }
+
+  .quick-card-arrow {
+    font-size: 14px;
+  }
+
+  .about-section {
+    gap: 11px;
+    padding: 16px;
+  }
+
+  .about-icon {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
+  }
+
+  .about-content h2 {
+    font-size: 13px;
+  }
+
+  .about-content p {
+    font-size: 11px;
+  }
+
+  .medical-disclaimer {
+    padding: 14px;
+  }
+
+  .floating-profile {
+    right: 13px;
+    bottom: 17px;
+    width: 54px;
+    height: 54px;
+  }
+
+  html[dir="ltr"] .floating-profile {
+    right: auto;
+    left: 13px;
+  }
+
+  .profile-popup {
+    right: 13px;
+    bottom: 83px;
+    width: min(280px, calc(100vw - 26px));
+  }
+
+  html[dir="ltr"] .profile-popup {
+    right: auto;
+    left: 13px;
+  }
+
+  .back-to-top {
+    left: 13px;
+    bottom: 18px;
+    width: 39px;
+    height: 39px;
+    border-radius: 13px;
+  }
+
+  html[dir="ltr"] .back-to-top {
+    right: 13px;
+    left: auto;
+  }
+
+  .toast-message {
+    bottom: 78px;
+  }
+}
+
+/* =========================================
+   EXTRA SMALL SCREENS
+========================================= */
+
+@media (max-width: 350px) {
+  .brand-text h1 {
+    font-size: 15px;
+  }
+
+  .brand-text p {
+    font-size: 9px;
+  }
+
+  .app-main {
+    padding-inline: 10px;
+  }
+
+  .hero-section {
+    padding-inline: 16px;
+  }
+
+  .drug-assessments {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-access-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-access-card {
+    min-height: 72px;
+  }
+
+  .search-form input {
+    font-size: 11px;
+  }
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+/* صورة البروفايل في منتصف بداية التطبيق */
+.hero-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 24px auto;
+}
+
+.hero-profile img {
+  display: block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+  border: 3px solid #7654c8;
+  box-shadow: 0 0 24px rgba(118, 84, 200, 0.25);
+}
+/* تصغير البطاقة البنفسجية العلوية */
+.hero-section {
+  padding: 12px 15px 14px !important;
+  margin-bottom: 12px !important;
+  border-radius: 18px !important;
+}
+
+.hero-badge {
+  font-size: 10px !important;
+  padding: 3px 8px !important;
+  margin-bottom: 5px !important;
+}
+
+.hero-section h2 {
+  font-size: clamp(20px, 5vw, 26px) !important;
+  line-height: 1.3 !important;
+  margin: 0 0 5px !important;
+}
+
+.hero-description {
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 520px) {
+  .hero-section {
+    padding: 10px 12px 12px !important;
+    margin-bottom: 10px !important;
+    border-radius: 15px !important;
+  }
+
+  .hero-badge {
+    font-size: 9px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .hero-section h2 {
+    font-size: 21px !important;
+  }
+
+  .hero-description {
+    font-size: 10px !important;
+    line-height: 1.5 !important;
+  }
+}
+/* إخفاء البطاقة البنفسجية العلوية نهائياً */
+.hero-section {
+  display: none !important;
+}
+
+/* =====================================
+   AMINO CURE — SCROLL ANIMATIONS
+===================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* حالة الظهور الأولية */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+/* عند ظهور العنصر أثناء التمرير */
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* احترام إعداد تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .scroll-reveal,
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* AMINO CURE — Floating Photo */
+
+.hero-profile img,
+.hero-profile-image {
+  animation: aminoCureFloating 2.5s ease-in-out infinite !important;
+}
+
+@keyframes aminoCureFloating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-profile img,
+  .hero-profile-image {
+    animation: none !important;
+  }
+}
+/* Amino Cure — Logo Size Fix */
+.app-logo {
+  width: 60px !important;
+  height: 60px !important;
+  min-width: 60px;
+  min-height: 60px;
+  max-width: none;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* =========================================
+   AMINO CURE — RESPONSIVE MASTER FIX
+   Mobile • Tablet • Laptop • Desktop
+========================================= */
+
+/* أساسيات تمنع خروج العناصر عن الشاشة */
+:root {
+  --container: 960px;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+img,
+input,
+textarea,
+select,
+button {
+  max-width: 100%;
+}
+
+.app-main,
+.app-header,
+section,
+footer,
+header,
+main {
+  min-width: 0;
+}
+
+/* الهيدر */
+.app-header {
+  width: 100%;
+  padding-inline: max(14px, calc((100% - 960px) / 2));
+}
+
+.header-brand {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.header-actions {
+  flex: 0 0 auto;
+}
+
+.app-logo {
+  width: 52px !important;
+  height: 52px !important;
+  min-width: 52px;
+  min-height: 52px;
+  flex: 0 0 52px !important;
+  object-fit: contain;
+}
+
+/* مساحة المحتوى */
+.app-main {
+  width: 100%;
+  max-width: 960px;
+  margin-inline: auto;
+  padding-inline: clamp(12px, 3vw, 28px);
+}
+
+section,
+.drug-card,
+.library-section,
+.about-section,
+.medical-disclaimer {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* البحث يتكيف مع العرض المتاح */
+.search-form {
+  width: 100%;
+  min-width: 0;
+}
+
+.search-form input {
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.primary-button {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.search-results {
+  width: 100%;
+  min-width: 0;
+}
+
+/* بطاقات نتائج الأدوية */
+.drug-card {
+  width: 100%;
+  min-width: 0;
+}
+
+.drug-card-header {
+  min-width: 0;
+}
+
+.drug-card-header > div {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.drug-assessments {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.assessment-card {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.drug-source a,
+.drug-details summary,
+.suggestion-item,
+.library-item {
+  overflow-wrap: anywhere;
+}
+
+/* بطاقات الوصول السريع */
+.quick-access-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.quick-access-card {
+  min-width: 0;
+}
+
+.quick-card-text {
+  min-width: 0;
+}
+
+/* صورة البروفايل */
+.hero-profile {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
+.hero-profile img,
+.hero-profile-image {
+  width: clamp(100px, 18vw, 150px);
+  height: clamp(100px, 18vw, 150px);
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* لوقو الفوتر */
+.footer-brand img,
+.footer-logo {
+  width: 42px !important;
+  height: 42px !important;
+  flex: 0 0 42px;
+  object-fit: contain;
+}
+
+/* النوافذ والأزرار العائمة */
+.profile-popup {
+  width: min(300px, calc(100vw - 28px));
+  max-width: calc(100vw - 28px);
+  max-height: calc(100dvh - 110px);
+  overflow-y: auto;
+}
+
+.floating-profile,
+.back-to-top {
+  max-width: calc(100vw - 24px);
+}
+
+/* =========================================
+   SMALL PHONES — 280px to 380px
+========================================= */
+@media (max-width: 380px) {
+  .app-header {
+    gap: 7px;
+    padding: 9px 10px;
+  }
+
+  .header-brand {
+    gap: 7px;
+  }
+
+  .app-logo {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px;
+    min-height: 40px;
+    flex-basis: 40px !important;
+  }
+
+  .brand-text h1 {
+    font-size: 15px;
+    letter-spacing: 0;
+  }
+
+  .brand-text p {
+    font-size: 9px;
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  .icon-button {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .app-main {
+    padding: 15px 10px 25px;
+  }
+
+  .search-form {
+    gap: 3px;
+    padding: 5px;
+  }
+
+  .search-input-icon {
+    width: 23px;
+    flex-basis: 23px;
+    font-size: 20px;
+  }
+
+  .search-form input {
+    font-size: 11px;
+  }
+
+  .primary-button {
+    min-width: 50px;
+    padding-inline: 8px;
+    font-size: 11px;
+  }
+
+  .drug-card {
+    padding: 12px;
+  }
+
+  .drug-name {
+    font-size: 16px;
+  }
+
+  .drug-assessments {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-access-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    gap: 8px;
+  }
+
+  .section-heading h2 {
+    font-size: 18px;
+  }
+
+  .floating-profile {
+    width: 46px;
+    height: 46px;
+  }
+
+  .back-to-top {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* =========================================
+   PHONES
+========================================= */
+@media (min-width: 381px) and (max-width: 520px) {
+  .app-main {
+    padding-inline: 14px;
+  }
+
+  .app-logo {
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px;
+    min-height: 44px;
+    flex-basis: 44px !important;
+  }
+
+  .drug-card {
+    padding: 14px;
+  }
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+@media (min-width: 521px) and (max-width: 767px) {
+  .app-main {
+    padding: 25px 22px 35px;
+  }
+
+  .app-header {
+    padding-inline: 22px;
+  }
+
+  .hero-profile img,
+  .hero-profile-image {
+    width: 135px;
+    height: 135px;
+  }
+
+  .drug-card {
+    padding: 20px;
+  }
+}
+
+/* =========================================
+   TABLETS LANDSCAPE & SMALL LAPTOPS
+========================================= */
+@media (min-width: 768px) and (max-width: 1099px) {
+  .app-main {
+    max-width: 900px;
+    padding-inline: 25px;
+  }
+
+  .app-header {
+    padding-inline: max(24px, calc((100% - 900px) / 2));
+  }
+}
+
+/* =========================================
+   LARGE LAPTOPS & DESKTOPS
+========================================= */
+@media (min-width: 1100px) {
+  .app-main {
+    max-width: 960px;
+    padding-top: 32px;
+    padding-bottom: 45px;
+  }
+
+  .app-header {
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+
+  .drug-card {
+    padding: 24px;
+  }
+
+  .library-section {
+    padding: 24px;
+  }
+}
+
+/* =========================================
+   ENGLISH — LTR COMPATIBILITY
+========================================= */
+html[dir="ltr"] .drug-summary {
+  border-inline-start: 0;
+  border-inline-end: 3px solid var(--primary);
+}
+
+html[dir="ltr"] .search-form,
+html[dir="ltr"] .drug-card,
+html[dir="ltr"] .quick-access-card,
+html[dir="ltr"] .library-item {
+  text-align: start;
+}
+
+/* لا تظهر البطاقة البنفسجية المخفية سابقاً */
+.hero-section {
+  display: none !important;
+}
+
+/* احترام إعدادات تقليل الحركة */
+@media (prefers-reduced-motion: reduce) {
+  .hero-profile img,
+  .hero-profile-image {
+    animation: none !important;
+  }
+}
+
+/* =========================================
+   AMINO CURE — ABOUT PROFILE
+========================================= */
+
+.about-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.about-profile {
+  flex: 0 0 88px;
+  width: 88px;
+  height: 88px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid var(--primary, #7654c8);
+  padding: 3px;
+  background: var(--card, #1f1a2e);
+}
+
+.about-profile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+}
+
+.about-content {
+  min-width: 0;
+  flex: 1;
+}
+
+.about-author {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.about-author strong {
+  color: var(--primary, #7654c8);
+}
+
+@media (max-width: 380px) {
+  .about-section {
+    gap: 10px;
+  }
+
+  .about-profile {
+    flex-basis: 68px;
+    width: 68px;
+    height: 68px;
+  }
+}
+/* =====================================
+   ABOUT SECTION — AMINO CURE
+===================================== */
+
+.about-section {
+  width: 100%;
+  max-width: 600px;
+  margin: 24px auto;
+  padding: 0 14px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.about-section .about-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 18px 16px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.about-section h2,
+.about-section h3 {
+  margin: 0 auto 12px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.about-section p {
+  max-width: 420px;
+  margin: 8px auto;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.8;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 0 12px;
+    margin: 20px auto;
+  }
+
+  .about-section .about-card {
+    padding: 16px 12px;
+  }
+
+  .about-section h2,
+  .about-section h3 {
+    font-size: 18px;
+  }
+
+  .about-section p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+}
+/* تصغير بطاقة عنّي */
+.about-section .about-card {
+  width: fit-content;
+  max-width: min(300px, 100%);
+  margin: 0 auto;
+  padding: 12px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.about-section p {
+  max-width: 260px;
+  margin: 6px auto;
+  font-size: 13px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.about-section h2,
+.about-section h3 {
+  font-size: 17px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+/* =================================
+   AMINO CURE — ABOUT CARD
+================================= */
+
+.about-section {
+  width: calc(100% - 32px);
+  max-width: 320px;
+  margin: 24px auto;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  border-radius: 16px;
+}
+
+.about-profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.about-profile img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.about-content {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+.about-content .section-eyebrow {
+  display: block;
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.about-content h2 {
+  width: 100%;
+  margin: 0 auto 8px;
+  font-size: clamp(15px, 4vw, 18px);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.about-content p {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  font-size: clamp(12px, 3.2vw, 14px);
+  line-height: 1.8;
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+/* الشاشات الصغيرة جدًا */
+@media (max-width: 360px) {
+  .about-section {
+    width: calc(100% - 24px);
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .about-profile img {
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* AMINO CURE — تصغير بطاقة عن المرجع */
+.about-section {
+  width: calc(100% - 40px) !important;
+  max-width: 260px !important;
+  margin: 18px auto !important;
+  padding: 10px !important;
+  gap: 6px !important;
+  border-radius: 14px !important;
+}
+
+.about-profile img {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+.about-content .section-eyebrow {
+  font-size: 10px !important;
+  margin-bottom: 3px !important;
+}
+
+.about-content h2 {
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  margin-bottom: 5px !important;
+}
+
+.about-content p {
+  max-width: 220px !important;
+  font-size: 11px !important;
+  line-height: 1.6 !important;
+}
+/* إصلاح دائرة الصورة في بطاقة عن المرجع */
+.about-profile {
+  width: 58px !important;
+  height: 58px !important;
+  min-width: 58px !important;
+  min-height: 58px !important;
+  margin: 0 auto 6px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}
+
+.about-profile img {
+  display: block !important;
+  width: 58px !important;
+  height: 58px !important;
+  min-width: 58px !important;
+  min-height: 58px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+}
+.about-profile {
+  width: 58px !important;
+  height: 58px !important;
+  min-width: 58px !important;
+  min-height: 58px !important;
+  aspect-ratio: 1 / 1 !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  border: none !important;
+  border-radius: 50% !important;
+  overflow: hidden !important;
+  flex: 0 0 58px !important;
+  display: grid !important;
+  place-items: center !important;
+}
+
+.about-profile img {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+  display: block !important;
+  margin: 0 !important;
+}
+/* =========================================
+   AMINO CURE — PREGNANCY & LACTATION GUIDE
+========================================= */
+
+.quick-access-card.guide-card {
+  grid-column: 1 / -1;
+}
+
+.guide-icon {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.guide-section {
+  margin-bottom: 28px;
+  padding: 19px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  scroll-margin-top: 100px;
+}
+
+.guide-section .section-heading h2 {
+  font-size: 19px;
+}
+
+.guide-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 5px;
+  margin-bottom: 16px;
+
+  background: var(--surface-soft);
+  border-radius: 14px;
+}
+
+.guide-tab {
+  min-height: 40px;
+  border: 0;
+  border-radius: 10px;
+
+  color: var(--text-secondary);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.guide-tab.is-active {
+  color: #fff;
+  background: var(--primary);
+}
+
+.guide-intro {
+  margin: 0 0 14px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 2;
+}
+
+.guide-item {
+  margin-bottom: 10px;
+  overflow: hidden;
+
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.guide-item summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  padding: 12px 14px;
+
+  cursor: pointer;
+  list-style: none;
+}
+
+.guide-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.guide-item summary::after {
+  content: "+";
+  margin-inline-start: auto;
+  color: var(--primary);
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.guide-item[open] summary::after {
+  content: "−";
+}
+
+.guide-badge {
+  flex: 0 0 auto;
+  padding: 3px 9px;
+
+  color: var(--primary);
+  background: var(--primary-soft);
+  border-radius: 8px;
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.guide-item-title {
+  flex: 1 1 140px;
+  min-width: 0;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.guide-item-body {
+  padding: 0 14px 14px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 2;
+}
+
+.guide-item-body p {
+  margin: 0 0 8px;
+}
+
+.guide-item-body ul {
+  margin: 0 0 10px;
+  padding-inline-start: 18px;
+}
+
+.guide-item-body li {
+  margin-bottom: 4px;
+}
+
+.guide-pharma {
+  margin: 10px 0;
+  padding: 11px 12px;
+
+  background: var(--primary-soft);
+  border-inline-start: 3px solid var(--primary);
+  border-radius: 10px;
+}
+
+.guide-pharma strong {
+  color: var(--primary);
+  font-size: 12px;
+}
+
+.guide-pharma p {
+  margin: 3px 0 0;
+  color: var(--text);
+}
+
+.guide-related-box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.guide-related-box > span {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.guide-related {
+  min-height: 32px;
+  padding: 5px 12px;
+
+  color: var(--primary);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.guide-related:hover {
+  border-color: var(--primary);
+}
+
+.guide-sources {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.guide-sources h3 {
+  margin: 0 0 6px;
+  font-size: 12px;
+}
+
+.guide-sources ul {
+  margin: 0;
+  padding-inline-start: 18px;
+  font-size: 11px;
+  line-height: 2;
+}
+
+.guide-sources a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.guide-sources a:hover {
+  text-decoration: underline;
+}
+
+.guide-note {
+  margin: 12px 0 0;
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 1.9;
+}
+/* =========================================
+   AMINO CURE — DRUG RESULTS (matches app.js)
+========================================= */
+
+.drug-label {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--primary);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.drug-card-header h3 {
+  margin: 0 0 4px;
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.drug-class {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.drug-info {
+  padding: 13px 14px;
+  margin-bottom: 10px;
+
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.result-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.result-heading h4 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.drug-info p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+  line-height: 2;
+  overflow-wrap: anywhere;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 11px;
+
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.status-badge::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status-compatible {
+  color: #1f8f6b;
+  background: var(--accent-soft);
+}
+
+.status-caution {
+  color: #a86f0c;
+  background: #fff4d9;
+}
+
+.status-avoid {
+  color: var(--danger);
+  background: var(--danger-soft);
+}
+
+.status-review {
+  color: var(--text-secondary);
+  background: var(--surface-hover);
+}
+
+html[data-theme="dark"] .status-compatible {
+  color: #5bd4aa;
+}
+
+html[data-theme="dark"] .status-caution {
+  color: #f0c36d;
+  background: #3a2f17;
+}
+
+.old-category-value {
+  color: var(--primary) !important;
+  font-size: 22px !important;
+  font-weight: 800;
+}
+
+.medical-warning {
+  margin-top: 6px !important;
+  color: var(--danger) !important;
+  font-size: 11px !important;
+}
+
+.last-reviewed {
+  margin: 10px 0 0;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.drug-sources {
+  margin-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.drug-sources summary {
+  padding: 12px 0 3px;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.source-list {
+  margin: 8px 0 0;
+  padding-inline-start: 18px;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.source-list a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.favorite-toggle[aria-pressed="true"] {
+  color: #d99a00;
+  background: #fff4d9;
+}
+
+.empty-state {
+  padding: 24px 16px;
+  text-align: center;
+
+  color: var(--text-secondary);
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+
+  font-size: 12px;
+  line-height: 2;
+}
+
+.history-list {
+  display: grid;
+  gap: 8px;
+}
+
+.history-item {
+  width: 100%;
+  padding: 12px 14px;
+  text-align: start;
+
+  color: var(--text);
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  border-color: var(--primary);
+}
+
+.connection-status.offline .connection-indicator {
+  background: #e3a84d;
+}
+
+/* =========================================
+   AMINO CURE — GESTATIONAL AGE CALCULATOR
+========================================= */
+
+.guide-calc {
+  margin-bottom: 14px;
+  padding: 14px;
+
+  background: var(--primary-soft);
+  border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+  border-radius: 16px;
+}
+
+.guide-calc h3 {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.guide-calc label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.guide-calc input[type="date"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.calc-result {
+  margin-top: 10px;
+}
+
+.calc-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.calc-row:last-of-type {
+  border-bottom: 0;
+}
+
+.calc-row span {
+  color: var(--text-secondary);
+}
+
+.calc-row strong {
+  color: var(--text);
+  text-align: end;
+}
+
+.calc-flag {
+  margin: 8px 0 0;
+  padding: 9px 11px;
+
+  color: var(--text);
+  background: var(--surface);
+  border-inline-start: 3px solid var(--primary);
+  border-radius: 10px;
+
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+.calc-warn {
+  margin: 0;
+  color: var(--danger);
+  font-size: 12px;
+}
